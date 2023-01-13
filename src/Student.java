@@ -9,4 +9,11 @@
 
 public class Student {
     // TODO: Modify and complete this class
+    private int grade;
+
+    public Student(String firstName, String lastName, String phoneNumber, int grade)
+    {
+        super(firstName, lastName, phoneNumber);
+        this.grade = grade;
+    }
 }
