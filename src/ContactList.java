@@ -49,8 +49,36 @@ public class ContactList
         System.out.println("1. Student");
         System.out.println("2. Employee");
         int input = s.nextInt();
-
-
+        s.nextLine();
+        if (input == 1)
+        {
+            System.out.println("Please fill in the following information.");
+            System.out.println("First Name: ");
+            String firstName = s.nextLine();
+            System.out.println("Last Name: ");
+            String lastName = s.nextLine();
+            System.out.println("Phone Number: ");
+            String number = s.nextLine();
+            System.out.println("Grade: ");
+            int grade = s.nextInt();
+            s.nextLine();
+            Person student = new Student(firstName, lastName, number, grade);
+            contactList.add(student);
+        }
+        else
+        {
+            System.out.println("Please fill in the following information.");
+            System.out.println("First Name: ");
+            String firstName = s.nextLine();
+            System.out.println("Last Name: ");
+            String lastName = s.nextLine();
+            System.out.println("Phone Number: ");
+            String number = s.nextLine();
+            System.out.println("Work: ");
+            String work = s.nextLine();
+            Person employee = new Employee(firstName, lastName, number, work);
+            contactList.add(employee);
+        }
     }
 
     /**
