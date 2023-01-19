@@ -1,3 +1,11 @@
+/**
+        * A subclass of Person that represents an Employee/Worker
+        *
+        * Created for Menlo School CS2
+        *
+        * @author: Damian Villarreal-Ayala
+        * @version: 2022-2023
+        */
 public class Employee extends Person{
     private String job;
 

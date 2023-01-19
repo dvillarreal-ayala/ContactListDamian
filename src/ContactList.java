@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * Created for Menlo School CS2
  *
- * @author: Ms. Namasivayam & Mr. Blick
+ * @author: Ms. Namasivayam & Mr. Blick & Damian Villarreal-Ayala
  * @version: 2022-2023
  */
 
@@ -23,7 +23,7 @@ public class ContactList
         contactList = new ArrayList<Person>();
     }
 
-}
+
 
     public void printMenuOptions() {
         System.out.println("Menu: ");
@@ -86,6 +86,10 @@ public class ContactList
      */
     public void printContacts() {
         // TODO: Complete the printContacts method
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            System.out.println(contactList.get(i));
+        }
     }
 
     /**
@@ -95,6 +99,7 @@ public class ContactList
      */
     public void sort(int sortBy) {
         // TODO: Complete the sort method
+
     }
 
     // TODO: Write searchByFirstName
@@ -119,6 +124,19 @@ public class ContactList
         System.out.println("Please pick from the following menu options");
         printMenuOptions();
 
+        Scanner s = new Scanner(System.in);
+        int choice = s.nextInt();
+        s.nextLine();
+
+        while (choice != 0)
+        {
+            if (choice == 1)
+            {
+                this.addContact();
+            }
+            choice = s.nextInt();
+            //cool stuff
+        }
         // TODO: Complete the run method
     }
 
