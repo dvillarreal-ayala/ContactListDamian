@@ -78,6 +78,7 @@ public class ContactList
             String work = s.nextLine();
             Person employee = new Employee(firstName, lastName, number, work);
             contactList.add(employee);
+
         }
     }
 
@@ -97,22 +98,107 @@ public class ContactList
      * lastName, or phoneNumber
      * @param sortBy: 0=firstName, 1=lastName, 2=phoneNumber
      */
-    public void sort(int sortBy) {
+    public void sort(int sortBy)
+    {
         // TODO: Complete the sort method
+        int size = contactList.size();
 
+        if (sortBy == 0)
+        {
+            for(int pass = 1; pass < size; pass++)
+            {
+                for(int comp = 0; comp < size - pass; comp++)
+                {
+                    if (contactList.get(comp).getFirstName().compareTo(contactList.get(comp + 1).getFirstName()) > 0)
+                    {
+                        contactList.add(comp, contactList.get(comp + 1));
+                        contactList.remove(comp + 2);
+                    }
+                }
+            }
+            this.printContacts();
+        }
+
+        else if (sortBy == 1)
+        {
+            for(int pass = 1; pass < size; pass++)
+            {
+                for(int comp = 0; comp < size - pass; comp++)
+                {
+                    if (contactList.get(comp).getLastName().compareTo(contactList.get(comp + 1).getLastName()) > 0)
+                    {
+                        contactList.add(comp, contactList.get(comp + 1));
+                        contactList.remove(comp + 2);
+                    }
+                }
+            }
+            this.printContacts();
+        }
+
+        if (sortBy == 2)
+        {
+            for(int pass = 1; pass < size; pass++)
+            {
+                for(int comp = 0; comp < size - pass; comp++)
+                {
+                    if (contactList.get(comp).getPhoneNumber().compareTo(contactList.get(comp + 1).getPhoneNumber()) > 0)
+                    {
+                        contactList.add(comp, contactList.get(comp + 1));
+                        contactList.remove(comp + 2);
+                    }
+                }
+            }
+            this.printContacts();
+        }
     }
-
     // TODO: Write searchByFirstName
-
+    public Person searchByFirstName(String firstName)
+    {
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            if(contactList.get(i).getFirstName().equals(firstName))
+            {
+                return contactList.get(i);
+            }
+        }
+        return null;
+    }
     // TODO: Write searchByLastName
-
+    public Person searchByLastName(String lastName)
+    {
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            if(contactList.get(i).getLastName().equals(lastName))
+            {
+                return contactList.get(i);
+            }
+        }
+        return null;
+    }
     // TODO: Write searchByPhoneNumber
-
+    public Person searchByPhoneNumber(String phoneNumber)
+    {
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            if(contactList.get(i).getPhoneNumber().equals(phoneNumber))
+            {
+                return contactList.get(i);
+            }
+        }
+        return null;
+    }
     /**
      * Lists just the Student objects in the Contact List
      */
     public void listStudents() {
         // TODO: Complete the listStudents method
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            if (contactList.get(i) instanceof Student)
+            {
+                System.out.println(contactList.get(i));
+            }
+        }
     }
 
     /**
@@ -128,14 +214,72 @@ public class ContactList
         int choice = s.nextInt();
         s.nextLine();
 
+        //As long as 0 isn't inputted the code will continue running.
         while (choice != 0)
         {
+            //Determines which option exactly to run.
             if (choice == 1)
             {
                 this.addContact();
             }
+            else if (choice == 2)
+            {
+                this.sort(0);
+            }
+            else if (choice == 3)
+            {
+                this.sort(1);
+            }
+            else if (choice == 4)
+            {
+                this.sort(2);
+            }
+            else if(choice == 5)
+            {
+                this.listStudents();
+            }
+            else if(choice == 6)
+            {
+                System.out.println("Enter a first name: ");
+                String string = s.nextLine();
+                if (this.searchByFirstName(string) == null)
+                {
+                    System.out.println(string + " is not in the list.");
+                }
+                else
+                {
+                    System.out.println(this.searchByFirstName(string));
+                }
+            }
+            else if(choice == 7)
+            {
+                System.out.println("Enter a last name: ");
+                String string = s.nextLine();
+                if (this.searchByLastName(string) == null)
+                {
+                    System.out.println(string + " is not in the list.");
+                }
+                else
+                {
+                    System.out.println(this.searchByLastName(string));
+                }
+            }
+            else if (choice == 8)
+            {
+                System.out.println("Enter a phone number: ");
+                String string = s.nextLine();
+                if (this.searchByPhoneNumber(string) == null)
+                {
+                    System.out.println(string + " is not in the list.");
+                }
+                else
+                {
+                    System.out.println(this.searchByPhoneNumber(string));
+                }
+            }
+            printMenuOptions();
             choice = s.nextInt();
-            //cool stuff
+            s.nextLine();
         }
         // TODO: Complete the run method
     }
